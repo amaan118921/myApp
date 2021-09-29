@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/weatherFragment">
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.myapp.main.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_fullNewsFragment"
+            app:destination="@id/fullNewsFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_googleLogInFragment2"
+            app:destination="@id/googleLogInFragment2" />
+        <action
+            android:id="@+id/action_newsFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullNewsFragment"
+        android:name="com.example.myapp.main.FullNewsFragment"
+        android:label="FullNewsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapp.main.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/googleLogInFragment2"
+        android:name="com.example.myapp.registrationAndLogin.GoogleLogInFragment"
+        android:label="fragment_google_log_in"
+        tools:layout="@layout/fragment_google_log_in" />
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.myapp.main.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFragment_to_googleLogInFragment2"
+            app:destination="@id/googleLogInFragment2"
+            app:popUpTo="@id/googleLogInFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

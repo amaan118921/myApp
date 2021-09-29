@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".registrationAndLogin.RegistrationFragment">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Verify Number"
+    android:layout_marginTop="85dp"
+    android:layout_marginStart="30dp"
+    android:textSize="24sp"
+    android:fontFamily="@font/spartanmedium500"
+    />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/card"
+        app:cardCornerRadius="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ccp"
+                android:layout_marginStart="7dp"
+/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/spartanreg"
+                android:hint="Mobile number"
+                android:background="@null"
+                android:maxLength="10"
+                android:id="@+id/getPhone"
+                android:inputType="phone"
+                />
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/send_otp"
+        android:text="Send OTP"
+        android:textStyle="bold"
+        android:fontFamily="@font/spartanmedium500"
+        app:backgroundTint="#22CB5C"
+        android:layout_gravity="center_horizontal"
+
+        />
+
+</LinearLayout>

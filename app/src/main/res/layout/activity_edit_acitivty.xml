@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.EditActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textSize="22sp"
+        android:fontFamily="@font/spartanreg"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="25dp"
+        android:id="@+id/edit_profile"
+        android:layout_marginTop="75dp"
+        />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/ic_baseline_cancel_24"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="75dp"
+        android:id="@+id/cancel"
+        android:layout_marginTop="25dp"
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/card"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/name_card"
+        app:cardCornerRadius="10dp"
+        >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/spartanreg"
+        android:hint="Name"
+        android:inputType="text"
+        android:id="@+id/name"
+        android:background="@null"
+        />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/card"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/phone_card"
+        android:layout_below="@id/name_card"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ccp"
+                android:layout_marginStart="7dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/spartanreg"
+                android:hint="Mobile number"
+                android:background="@null"
+                android:maxLength="10"
+                android:id="@+id/getPhone"
+                android:inputType="phone"
+                />
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Requires OTP Verification"
+        android:layout_below="@id/phone_card"
+        android:layout_alignStart="@id/phone_card"
+        android:layout_marginTop="7dp"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="55dp"
+        android:id="@+id/save"
+        android:layout_below="@id/phone_card"
+        android:text="Save"
+        android:textStyle="bold"
+        android:fontFamily="@font/spartanmedium500"
+        app:backgroundTint="#22CB5C"
+        android:layout_centerHorizontal="true"
+
+        />
+
+
+
+
+</RelativeLayout>

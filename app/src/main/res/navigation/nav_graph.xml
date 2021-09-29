@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/googleLogInFragment">
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.myapp.registrationAndLogin.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment"
+            app:popUpTo="@id/OTPFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.example.myapp.registrationAndLogin.OTPFragment"
+        android:label="fragment_o_t_p"
+        tools:layout="@layout/fragment_o_t_p" >
+        <action
+            android:id="@+id/action_OTPFragment_to_homeActivity"
+            app:destination="@id/homeActivity"
+            app:popUpTo="@id/homeActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/googleLogInFragment"
+        android:name="com.example.myapp.registrationAndLogin.GoogleLogInFragment"
+        android:label="fragment_google_log_in"
+        tools:layout="@layout/fragment_google_log_in"
+        app:startDestination="@id/action_googleLogInFragment_to_registrationFragment">
+        <action
+            android:id="@+id/action_googleLogInFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_googleLogInFragment_to_homeActivity"
+            app:destination="@id/homeActivity"
+            app:popUpTo="@id/homeActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.myapp.main.HomeActivity"
+        android:label="HomeActivity" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="Amaan" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </activity>
+</navigation>
