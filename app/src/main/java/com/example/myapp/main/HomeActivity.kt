@@ -2,6 +2,7 @@ package com.example.myapp.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -42,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var navController: NavController
     private lateinit var uid: String
-
+    private lateinit var userUid: String
     private val navArgs: HomeActivityArgs by navArgs()
 
 
@@ -54,10 +55,25 @@ class HomeActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
+        database = FirebaseDatabase.getInstance()
 
-//        if(user == null) {
-//            navController.navigate(R.id.googleLogInFragment)
-//        }
+        val id = navArgs.uid
+
+        ref = database.reference.child("accounts").child(id)
+
+        ref.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.child("name").value.toString()
+//                Toast.makeText(this@HomeActivity, auth.currentUser!!.uid, Toast.LENGTH_SHORT).show()
+                binding.userName.setText(name)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.home_fragment_container_view) as NavHostFragment
@@ -65,9 +81,6 @@ class HomeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
 
-
-        val name = navArgs.name
-        uid = navArgs.uid
 
 
 
@@ -80,12 +93,27 @@ class HomeActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
 
 
-        binding.userName.setText(name)
+
 
         binding.weather.setOnClickListener {
+            binding.apply {
+                weather.setCardBackgroundColor(resources.getColor(R.color.blue))
+                weatherT.setTextColor(resources.getColor(R.color.white))
+                news.setCardBackgroundColor(resources.getColor(R.color.white))
+                newsT.setTextColor(resources.getColor(R.color.black))
+            }
+
             navController.navigate(R.id.weatherFragment)
         }
         binding.news.setOnClickListener {
+            binding.apply {
+                newsT.setTextColor(resources.getColor(R.color.white))
+                news.setCardBackgroundColor(resources.getColor(R.color.blue))
+                weatherT.setTextColor(resources.getColor(R.color.black))
+                weather.setCardBackgroundColor(resources.getColor(R.color.white))
+            }
+
+
             navController.navigate(R.id.newsFragment)
         }
 
@@ -93,17 +121,20 @@ class HomeActivity : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when(item.itemId)     {
                     R.id.home_menu ->  {
+                        binding.apply {
+                            newsT.setTextColor(resources.getColor(R.color.white))
+                            news.setCardBackgroundColor(resources.getColor(R.color.blue))
+                            weatherT.setTextColor(resources.getColor(R.color.black))
+                            weather.setCardBackgroundColor(resources.getColor(R.color.white))
+                        }
                       navController.navigate(R.id.newsFragment)
 
                     }
 
-                    R.id.qr ->  {
-
-                    }
 
                     R.id.profile -> {
                         val intent  = Intent(this@HomeActivity, ProfileActivity::class.java)
-                        intent.putExtra("uid", uid)
+                        intent.putExtra("uid", id)
                         startActivity(intent)
                     }
 

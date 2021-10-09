@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.WeatherFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+
+
+
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="260dp"
+        android:layout_width="300dp"
         android:layout_height="115dp"
         android:layout_marginTop="22dp"
+        android:id="@+id/m1"
         app:cardElevation="2dp"
         >
         <LinearLayout
@@ -22,10 +30,10 @@
             >
 
             <ImageView
-                android:layout_width="110dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 android:id="@+id/img1"
-                android:src="@drawable/flag_aland_islands"
+                android:background="@drawable/img_view"
                 android:layout_gravity="center_vertical"
                 android:scaleType="fitXY"
                 android:layout_marginStart="15dp"
@@ -40,11 +48,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25 C"
+                    android:text=""
                     android:id="@+id/t1"
                     android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textSize="10sp"
+                    android:fontFamily="@font/spartanreg"
+                    android:layout_marginTop="28dp"
+                    android:textSize="12sp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,13 +62,15 @@
                     android:id="@+id/t2"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
+                    android:fontFamily="@font/spartanreg"
                     android:textSize="10sp"
                     />
                 <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="24/09/2021"
+                android:text=""
                 android:id="@+id/t3"
+                    android:fontFamily="@font/spartanreg"
                     android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     />
@@ -72,9 +83,10 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="260dp"
+        android:layout_width="300dp"
         android:layout_height="115dp"
         android:layout_marginTop="15dp"
+        android:id="@+id/m2"
         app:cardElevation="2dp"
         >
         <LinearLayout
@@ -84,10 +96,10 @@
             >
 
             <ImageView
-                android:layout_width="110dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 android:id="@+id/img2"
-                android:src="@drawable/flag_aland_islands"
+                android:background="@drawable/img_view"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="15dp"
@@ -103,11 +115,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25 C"
+                    android:text=""
                     android:id="@+id/T1"
                     android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textSize="10sp"
+                    android:fontFamily="@font/spartanreg"
+                    android:layout_marginTop="28dp"
+                    android:textSize="12sp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,14 +128,16 @@
                     android:text="Yesterday"
                     android:id="@+id/T2"
                     android:textStyle="bold"
+                    android:fontFamily="@font/spartanreg"
                     android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24/09/2021"
+                    android:text=""
                     android:id="@+id/T3"
+                    android:fontFamily="@font/spartanreg"
                     android:layout_marginTop="5dp"
                     android:textSize="10sp"
                     />
@@ -135,10 +150,11 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="260dp"
+        android:layout_width="300dp"
         android:layout_height="115dp"
         android:layout_marginTop="15dp"
         app:cardElevation="2dp"
+        android:id="@+id/m3"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -147,12 +163,12 @@
             >
 
             <ImageView
-                android:layout_width="110dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 android:id="@+id/img3"
-                android:src="@drawable/flag_aland_islands"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_vertical"
+                android:background="@drawable/img_view"
                 android:layout_marginStart="15dp"
                 />
 
@@ -166,9 +182,10 @@
                     android:id="@+id/Tt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="25 C"
-                    android:textSize="10sp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/spartanreg"
+                    android:text=""
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -176,7 +193,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Day Before Yesterday"
+                    android:fontFamily="@font/spartanreg"
+                    android:text="Day before Yesterday"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
@@ -185,13 +203,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="24/09/2021"
+                    android:text=""
+                    android:fontFamily="@font/spartanreg"
                     android:textSize="10sp" />
             </LinearLayout>
 
         </LinearLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/PB"
+        android:visibility="visible"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="245dp"
+        />
+
+</FrameLayout>

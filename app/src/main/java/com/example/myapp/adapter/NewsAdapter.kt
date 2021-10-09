@@ -67,7 +67,7 @@ class NewsAdapter(val model: HomeViewModel, val fragment: Fragment): ListAdapter
             fragment.findNavController().navigate(R.id.action_newsFragment_to_fullNewsFragment)
         }
 
-        Picasso.get().load(item.urlToImage).into(holder.imgView)
+        Picasso.get().load(item.urlToImage).placeholder(R.drawable.loading_animation).into(holder.imgView)
 
     }
 }

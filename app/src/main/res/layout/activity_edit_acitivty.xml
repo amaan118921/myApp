@@ -19,12 +19,22 @@
         android:layout_marginTop="75dp"
         />
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pb"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="245dp"
+        />
+
+
     <ImageView
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:src="@drawable/ic_baseline_cancel_24"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="25dp"
         android:id="@+id/cancel"
         android:layout_marginTop="25dp"
         />
@@ -48,6 +58,7 @@
         android:fontFamily="@font/spartanreg"
         android:hint="Name"
         android:inputType="text"
+        android:focusable="auto"
         android:id="@+id/name"
         android:background="@null"
         />
@@ -84,7 +95,7 @@
                 android:fontFamily="@font/spartanreg"
                 android:hint="Mobile number"
                 android:background="@null"
-                android:maxLength="10"
+                android:focusable="auto"
                 android:id="@+id/getPhone"
                 android:inputType="phone"
                 />
@@ -93,15 +104,15 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Requires OTP Verification"
-        android:layout_below="@id/phone_card"
-        android:layout_alignStart="@id/phone_card"
-        android:layout_marginTop="7dp"
-        android:textSize="10sp"
-        tools:ignore="SmallSp" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Requires OTP Verification"-->
+<!--        android:layout_below="@id/phone_card"-->
+<!--        android:layout_alignStart="@id/phone_card"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:textSize="10sp"-->
+<!--        tools:ignore="SmallSp" />-->
 
 
     <com.google.android.material.button.MaterialButton

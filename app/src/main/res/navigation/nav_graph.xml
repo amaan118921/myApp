@@ -26,6 +26,9 @@
             app:destination="@id/homeActivity"
             app:popUpTo="@id/homeActivity"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_OTPFragment_to_splashActivity"
+            app:destination="@id/splashActivity" />
     </fragment>
     <fragment
         android:id="@+id/googleLogInFragment"
@@ -39,19 +42,25 @@
             app:popUpTo="@id/registrationFragment"
             app:popUpToInclusive="true" />
         <action
+            android:id="@+id/action_googleLogInFragment_to_splashActivity"
+            app:destination="@id/splashActivity" />
+        <action
             android:id="@+id/action_googleLogInFragment_to_homeActivity"
-            app:destination="@id/homeActivity"
-            app:popUpTo="@id/homeActivity"
-            app:popUpToInclusive="true" />
+            app:destination="@id/homeActivity" />
     </fragment>
     <activity
         android:id="@+id/homeActivity"
         android:name="com.example.myapp.main.HomeActivity"
         android:label="HomeActivity" >
         <argument
-            android:name="name"
-            app:argType="string"
-            android:defaultValue="Amaan" />
+            android:name="uid"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.example.myapp.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" >
         <argument
             android:name="uid"
             app:argType="string" />

@@ -7,20 +7,33 @@
     android:orientation="vertical"
     tools:context=".main.ProfileActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:id="@+id/profile_image"
-        tools:src="@tools:sample/avatars"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:id="@+id/profile_image"
+            tools:src="@tools:sample/avatars"
+            />
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_baseline_camera_24"
+            android:layout_alignEnd="@id/profile_image"
+            android:layout_alignBottom="@id/profile_image"
+            android:id="@+id/update_image" />
+    </RelativeLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name"
-        android:text="Amaan Ur Rahman"
+        android:text=""
         android:textSize="15sp"
         android:layout_gravity="center_horizontal"
         android:textColor="#0000FF"
@@ -31,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/phone"
-        android:text="9767857572"
+        android:text=""
         android:textSize="12sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="7dp"
@@ -40,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/email"
-        android:text="amaanurrahman00@gmail.com"
+        android:text=""
         android:textSize="12sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="7dp"
@@ -50,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="7dp"
         app:cardBackgroundColor="#E1E8ED"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         />
 
     <ProgressBar

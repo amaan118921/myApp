@@ -80,19 +80,19 @@ class AppViewModel(private val itemDao: Dao): ViewModel() {
         this.account = account
     }
 
-    fun insertInFirebase() {
-        auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        ref = database.reference.child("accounts").child(auth.uid!!)
-        val user = UserInfo(account.displayName!!, account.email!!, account.idToken!!, account.photoUrl!!.toString())
-        ref.push().setValue(user).addOnCompleteListener(object: OnCompleteListener<Void> {
-            override fun onComplete(p0: Task<Void>) {
-                GoogleLogInFragment.binding.pb.visibility = View.INVISIBLE
-            }
-
-        })
-
-    }
+//    fun insertInFirebase() {
+//        auth = FirebaseAuth.getInstance()
+//        database = FirebaseDatabase.getInstance()
+//        ref = database.reference.child("accounts").child(auth.uid!!)
+//        val user = UserInfo(account.displayName!!, account.email!!, account.idToken!!, account.photoUrl!!.toString())
+//        ref.push().setValue(user).addOnCompleteListener(object: OnCompleteListener<Void> {
+//            override fun onComplete(p0: Task<Void>) {
+//                GoogleLogInFragment.binding.pb.visibility = View.INVISIBLE
+//            }
+//
+//        })
+//
+//    }
 
 }
 

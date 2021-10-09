@@ -53,6 +53,7 @@ class GoogleLogInFragment : Fragment() {
          @SuppressLint("StaticFieldLeak")
          lateinit var binding: FragmentGoogleLogInBinding
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,23 +66,26 @@ class GoogleLogInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-
-        idList = mutableListOf()
-
-        val tempUser = auth.currentUser
-
-//        if(tempUser != null) {
-//            Toast.makeText(requireContext(), "Welcome Back", Toast.LENGTH_SHORT).show()
-//            val action = GoogleLogInFragmentDirections.actionGoogleLogInFragmentToHomeActivity(tempUser.displayName!!)
-//            findNavController().navigate(action)
-//        }
-
-
         googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.web_client_id))
             .requestEmail()
             .build()
 
-         googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
+        if(auth.currentUser != null) {
+//            val action = GoogleLogInFragmentDirections.actionGoogleLogInFragmentToHomeActivity(auth.currentUser!!.uid)
+//            findNavController().navigate(action)
+//             requireActivity().finish()
+            binding.l1.visibility = View.INVISIBLE
+            binding.splash.visibility=View.VISIBLE
+            signIn()
+        }
+
+        idList = mutableListOf()
+
+
+
+
+
 
         binding.cardView.setOnClickListener {
             signIn()
@@ -110,7 +114,6 @@ class GoogleLogInFragment : Fragment() {
             val account = task.getResult(ApiException::class.java)
             binding.pb.visibility = View.VISIBLE
             firebaseAuthWithGoogle(account)
-
         }
         catch (e: ApiException) {
             Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
@@ -129,19 +132,20 @@ class GoogleLogInFragment : Fragment() {
                 ref = database.reference.child("accounts").child(user.uid)
 
                 if(task.result.additionalUserInfo?.isNewUser == true) {
-                    val item = UserInfo(user.displayName!!, user.email  !!, account.idToken!!, user.photoUrl!!.toString())
-                    ref.push().setValue(item).addOnCompleteListener(object: OnCompleteListener<Void> {
+
+
+
+                    val item = UserInfo(user.displayName!!, user.email  !!, user.photoUrl!!.toString())
+                    ref.setValue(item).addOnCompleteListener(object: OnCompleteListener<Void> {
 
                         override fun onComplete(p0: Task<Void>) {
-                            model.insertInFirebase()
+                            model.setName(user.displayName!!)
+                            model.setUid(user.uid)
                             binding.pb.visibility = View.INVISIBLE
                             Toast.makeText(requireContext(), "Sign in Successful", Toast.LENGTH_SHORT).show()
-//                            val data  = DataInfo(id = 17, name = user.displayName!!, email = user.email!!
-//                            , userToken = user.uid, uri = user.photoUrl!!.toString())
-//                              model.insertInRoom(data)
-                              model.setName(user.displayName!!)
-                              model.setUid(user.uid)
-                              findNavController().navigate(R.id.action_googleLogInFragment_to_registrationFragment)
+                            findNavController().navigate(R.id.action_googleLogInFragment_to_registrationFragment)
+
+
                         }
 
                     })
@@ -150,8 +154,9 @@ class GoogleLogInFragment : Fragment() {
                 else {
                     binding.pb.visibility = View.INVISIBLE
                     Toast.makeText(requireContext(), user.displayName, Toast.LENGTH_SHORT).show()
-                    val action = GoogleLogInFragmentDirections.actionGoogleLogInFragmentToHomeActivity(user.displayName!!, user.uid)
+                    val action = GoogleLogInFragmentDirections.actionGoogleLogInFragmentToHomeActivity(user.uid)
                     findNavController().navigate(action)
+                    requireActivity().finish()
                 }
 
 
@@ -163,6 +168,9 @@ class GoogleLogInFragment : Fragment() {
 
 
     }
+
+
+
 
 
 }

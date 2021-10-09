@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_graph"
-    app:startDestination="@id/weatherFragment">
+    app:startDestination="@id/newsFragment">
 
     <fragment
         android:id="@+id/newsFragment"
@@ -47,5 +47,23 @@
             app:destination="@id/googleLogInFragment2"
             app:popUpTo="@id/googleLogInFragment2"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_weatherFragment_to_weatherDetail"
+            app:destination="@id/weatherDetail" />
     </fragment>
+    <activity
+        android:id="@+id/weatherDetail"
+        android:name="com.example.myapp.main.WeatherDetail"
+        android:label="activity_weather_detail"
+        tools:layout="@layout/activity_weather_detail" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </activity>
 </navigation>

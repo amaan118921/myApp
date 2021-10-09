@@ -24,6 +24,8 @@ class ProfileFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var ref: DatabaseReference
     private lateinit var uid: String
+    private lateinit var name: String
+    private lateinit var email: String
     private  var profile: UserInfo? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +44,8 @@ class ProfileFragment : Fragment() {
         ref = database.reference.child("accounts").child(uid)
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                profile = snapshot.getValue(UserInfo::class.java)
+                name = snapshot.child("name").value.toString()
+                email = snapshot.child("email").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -52,9 +55,9 @@ class ProfileFragment : Fragment() {
         })
 
 
-       Picasso.get().load(profile?.uri?.toUri()).into(binding.profileImage)
-        binding.name.setText(profile?.name)
-        binding.email.setText(profile?.email)
+        Picasso.get().load(profile?.uri?.toUri()).into(binding.profileImage)
+        binding.name.setText(name)
+        binding.email.setText(email)
         binding.phone.setText("9767857572")
 
 

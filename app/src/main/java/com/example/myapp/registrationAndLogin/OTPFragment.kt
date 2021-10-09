@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapp.R
 import com.example.myapp.databinding.FragmentOTPBinding
+import com.example.myapp.modelData.UserInfo
 import com.example.myapp.room.DataInfo
 import com.example.myapp.viewModel.AppViewModel
 import com.google.android.gms.tasks.OnCompleteListener
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.util.concurrent.TimeUnit
 
 class OTPFragment : Fragment() {
@@ -27,7 +30,8 @@ class OTPFragment : Fragment() {
      private lateinit var userToken: PhoneAuthProvider.ForceResendingToken
      private lateinit var auth: FirebaseAuth
      private val model: AppViewModel by activityViewModels()
-
+     private lateinit var database: FirebaseDatabase
+     private lateinit var ref: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +44,7 @@ class OTPFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         auth = FirebaseAuth.getInstance()
-
+        database = FirebaseDatabase.getInstance()
 
         binding.verify.setOnClickListener {
             otp = binding.getOtp.text.toString()
@@ -54,13 +58,6 @@ class OTPFragment : Fragment() {
             }
         }
 
-
-        val user = auth.currentUser
-
-//        val data  = DataInfo(id = 17, name = user!!.displayName!!, email = user.email!!
-//            , userToken = user.uid, uri = user.photoUrl!!.toString(), phone = model.getPhone())
-//
-//        model.insertInRoom(data)
 
 
 
@@ -115,10 +112,21 @@ class OTPFragment : Fragment() {
             .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
                 override fun onComplete(p0: Task<AuthResult>) {
                     if(p0.isSuccessful) {
+//                        val phone = model.getPhone()
+//                        ref = database.reference.child("accounts").child(model.getUid()).child("phone")
+//                        ref.setValue(phone).addOnCompleteListener(object: OnCompleteListener<Void> {
+//                            override fun onComplete(p0: Task<Void>) {
+//
+//                            }
+//
+//                        })
+
                         binding.pb.visibility=View.INVISIBLE
                         Toast.makeText(requireContext(), "Verification Successful", Toast.LENGTH_SHORT).show()
-                        val action = OTPFragmentDirections.actionOTPFragmentToHomeActivity(model.getName(), model.getUid())
+                        val action = OTPFragmentDirections.actionOTPFragmentToSplashActivity(model.getUid())
                         findNavController().navigate(action)
+                        requireActivity().finish()
+
                     }
                 }
 
